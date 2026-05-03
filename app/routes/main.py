@@ -107,6 +107,17 @@ def robots():
     return response
 
 
+@main_bp.route('/ads.txt')
+def ads_txt():
+    client_id = current_app.config.get('ADSENSE_CLIENT', '')
+    # Remove 'ca-' prefix if present for the ads.txt entry
+    pub_id = client_id.replace('ca-', '')
+    content = f'google.com, {pub_id}, DIRECT, f08c47fec0942fa0'
+    response = make_response(content)
+    response.headers['Content-Type'] = 'text/plain'
+    return response
+
+
 @main_bp.route('/health')
 def health():
     return {'status': 'ok'}, 200

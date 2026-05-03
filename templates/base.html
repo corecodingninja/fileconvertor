@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +10,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.GOOGLE_ANALYTICS_ID }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', '{{ config.GOOGLE_ANALYTICS_ID }}');
   </script>
@@ -17,8 +18,10 @@
 
   <!-- SEO -->
   <title>{{ meta.title if meta else 'ConverterHub — Premium Online File Converter' }}</title>
-  <meta name="description" content="{{ meta.description if meta else 'Convert Word to PDF, PDF to Word, and optimize images for free online. Secure, fast, and private.' }}" />
-  <meta name="keywords" content="{{ meta.keywords if meta else 'file converter, word to pdf, pdf to word, image converter' }}" />
+  <meta name="description"
+    content="{{ meta.description if meta else 'Convert Word to PDF, PDF to Word, and optimize images for free online. Secure, fast, and private.' }}" />
+  <meta name="keywords"
+    content="{{ meta.keywords if meta else 'file converter, word to pdf, pdf to word, image converter' }}" />
   <link rel="canonical" href="{{ request.url }}" />
 
   <!-- Open Graph -->
@@ -41,11 +44,14 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
 
-  <!-- AdSense Auto-Ads -->
-  {% if config.ADSENSE_CLIENT %}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ config.ADSENSE_CLIENT }}" crossorigin="anonymous"></script>
+  <!-- AdSense Auto-Ads (Only if client is set and not on home page) -->
+  {% if config.ADSENSE_CLIENT and active_page != 'home' %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ config.ADSENSE_CLIENT }}"
+    crossorigin="anonymous"></script>
   {% endif %}
 
   <!-- CSS -->
@@ -60,7 +66,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px dashed var(--border-glass);
       border-radius: 12px;
       color: var(--text-dim);
@@ -70,115 +76,126 @@
       max-width: 100%;
       overflow: hidden;
     }
-    .ad-slot::before { content: "Advertisement"; opacity: 0.5; }
-    .ad-sidebar { min-height: 600px; width: 300px; }
-    .ad-horizontal { width: 100%; max-width: 970px; }
+
+    .ad-slot::before {
+      content: "Advertisement";
+      opacity: 0.5;
+    }
+
+    .ad-sidebar {
+      min-height: 600px;
+      width: 300px;
+    }
+
+    .ad-horizontal {
+      width: 100%;
+      max-width: 970px;
+    }
   </style>
   {% block extra_css %}{% endblock %}
 </head>
+
 <body>
 
-<header class="site-header">
-  <nav class="nav container">
-    <a href="/" class="nav-logo">
-      <span class="logo-icon">⇄</span>
-      <span class="logo-text">ConverterHub</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/word-to-pdf">Word to PDF</a></li>
-      <li><a href="/pdf-to-word">PDF to Word</a></li>
-      <li><a href="/png-to-jpg">PNG to JPG</a></li>
-      <li><a href="/compress-image">Compress</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-  </nav>
-</header>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">⇄</span>
+        <span class="logo-text">ConverterHub</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/word-to-pdf">Word to PDF</a></li>
+        <li><a href="/pdf-to-word">PDF to Word</a></li>
+        <li><a href="/png-to-jpg">PNG to JPG</a></li>
+        <li><a href="/compress-image">Compress</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </nav>
+  </header>
 
-{% macro render_ad(type='horizontal', class='') %}
+  {% macro render_ad(type='horizontal', class='') %}
   {% if config.ADSENSE_CLIENT %}
   <div class="ad-slot ad-{{ type }} {{ class }}">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="{{ config.ADSENSE_CLIENT }}"
-         data-ad-slot="auto"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="{{ config.ADSENSE_CLIENT }}" data-ad-slot="auto"
+      data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
   {% endif %}
-{% endmacro %}
+  {% endmacro %}
 
-<main>
-  {% block content %}{% endblock %}
-</main>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <div class="logo-wrap">
-        <span class="logo-icon">⇄</span>
-        <strong>ConverterHub</strong>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <span class="logo-icon">⇄</span>
+          <strong>ConverterHub</strong>
+        </div>
+        <p>The world's most private and professional file conversion tool. No accounts, no tracking, just speed.</p>
       </div>
-      <p>The world's most private and professional file conversion tool. No accounts, no tracking, just speed.</p>
+      <div class="footer-grid">
+        <div class="footer-links">
+          <h4>Conversion</h4>
+          <ul>
+            <li><a href="/word-to-pdf">Word to PDF</a></li>
+            <li><a href="/pdf-to-word">PDF to Word</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Images</h4>
+          <ul>
+            <li><a href="/png-to-jpg">PNG to JPG</a></li>
+            <li><a href="/jpg-to-png">JPG to PNG</a></li>
+            <li><a href="/image-to-webp">Convert to WebP</a></li>
+            <li><a href="/compress-image">Compress Image</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="footer-grid">
-      <div class="footer-links">
-        <h4>Conversion</h4>
-        <ul>
-          <li><a href="/word-to-pdf">Word to PDF</a></li>
-          <li><a href="/pdf-to-word">PDF to Word</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Images</h4>
-        <ul>
-          <li><a href="/png-to-jpg">PNG to JPG</a></li>
-          <li><a href="/jpg-to-png">JPG to PNG</a></li>
-          <li><a href="/image-to-webp">Convert to WebP</a></li>
-          <li><a href="/compress-image">Compress Image</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact Us</a></li>
-        </ul>
-      </div>
+    <div class="footer-bottom container">
+      <span>© 2026 ConverterHub. All rights reserved.</span>
+      <span class="footer-tech">Engineered for Performance</span>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div id="cookieBanner" class="cookie-banner" hidden>
+    <div class="container cookie-content">
+      <p>We use cookies to improve your experience. By using our site, you agree to our <a href="/privacy">Privacy
+          Policy</a>.</p>
+      <button id="acceptCookies" class="btn btn-primary btn-sm">Accept</button>
     </div>
   </div>
-  <div class="footer-bottom container">
-    <span>© 2026 ConverterHub. All rights reserved.</span>
-    <span class="footer-tech">Engineered for Performance</span>
-  </div>
-</footer>
 
-<!-- Cookie Consent -->
-<div id="cookieBanner" class="cookie-banner" hidden>
-  <div class="container cookie-content">
-    <p>We use cookies to improve your experience. By using our site, you agree to our <a href="/privacy">Privacy Policy</a>.</p>
-    <button id="acceptCookies" class="btn btn-primary btn-sm">Accept</button>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner = document.getElementById('cookieBanner');
-    const acceptBtn = document.getElementById('acceptCookies');
-    if (!localStorage.getItem('cookiesAccepted')) {
-      banner.hidden = false;
-    }
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      banner.hidden = true;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.getElementById('cookieBanner');
+      const acceptBtn = document.getElementById('acceptCookies');
+      if (!localStorage.getItem('cookiesAccepted')) {
+        banner.hidden = false;
+      }
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        banner.hidden = true;
+      });
     });
-  });
-</script>
+  </script>
 
-<script src="/static/js/upload.js" defer></script>
-{% block extra_js %}{% endblock %}
+  <script src="/static/js/upload.js" defer></script>
+  {% block extra_js %}{% endblock %}
 </body>
+
 </html>
