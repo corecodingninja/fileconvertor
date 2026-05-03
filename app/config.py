@@ -24,6 +24,7 @@ class BaseConfig:
     RATE_LIMIT_PER_HOUR = 10
     SITE_URL = os.getenv('SITE_URL', 'http://localhost:5001')
     SITE_NAME = 'ConverterHub'
+    SUPPORT_EMAIL = os.getenv('SUPPORT_EMAIL', 'corecodingninja@gmail.com')
     ADSENSE_CLIENT = os.getenv('ADSENSE_CLIENT', 'ca-pub-XXXXXXXXXXXXXXXX') # Placeholder
 
 
