@@ -48,10 +48,11 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- AdSense Auto-Ads (Only if client is set and not on home page) -->
-  {% if config.ADSENSE_CLIENT and active_page != 'home' %}
+  <!-- AdSense Auto-Ads -->
+  {% if config.ADSENSE_CLIENT %}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ config.ADSENSE_CLIENT }}"
     crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="{{ config.ADSENSE_CLIENT }}">
   {% endif %}
 
   <!-- CSS -->
