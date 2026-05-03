@@ -25,6 +25,7 @@ class BaseConfig:
     SITE_URL = os.getenv('SITE_URL', 'http://localhost:5001')
     SITE_NAME = 'ConverterHub'
     SUPPORT_EMAIL = os.getenv('SUPPORT_EMAIL', 'corecodingninja@gmail.com')
+    GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', 'G-6NNFF8M7FY')
     ADSENSE_CLIENT = os.getenv('ADSENSE_CLIENT', 'ca-pub-XXXXXXXXXXXXXXXX') # Placeholder
 
 
