@@ -67,7 +67,7 @@ def terms():
 @main_bp.route('/contact')
 def contact():
     meta = get_page_meta('contact')
-    return render_template('contact.html', meta=meta)
+    return render_template('contact.html', meta=meta, active_page='contact')
 
 
 @main_bp.route('/sitemap.xml')
@@ -83,6 +83,7 @@ def sitemap():
         {'loc': f'{base}/compress-image', 'priority': '0.8', 'changefreq': 'weekly'},
         {'loc': f'{base}/blog/', 'priority': '0.7', 'changefreq': 'weekly'},
         {'loc': f'{base}/about', 'priority': '0.5', 'changefreq': 'monthly'},
+        {'loc': f'{base}/contact', 'priority': '0.5', 'changefreq': 'monthly'},
         {'loc': f'{base}/privacy', 'priority': '0.3', 'changefreq': 'monthly'},
         {'loc': f'{base}/terms', 'priority': '0.3', 'changefreq': 'monthly'},
     ]
