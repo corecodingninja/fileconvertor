@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="converter-page container">
+  <div class="converter-header">
+    <div class="hero-badge" style="color: #6366f1; background: rgba(99,102,241,0.1);">Word Document</div>
+    <h1>Word to PDF</h1>
+    <p class="converter-sub">Professional-grade conversion that preserves your formatting perfectly. No signup required.</p>
+  </div>
+
+  {{ render_ad('horizontal') }}
+
+  <div class="converter-box" id="converterBox">
+    <!-- Initial Upload -->
+    <div id="uploadState">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" hidden accept=".docx,.doc">
+        <span class="drop-icon">📄</span>
+        <h2 class="drop-title">Drop your Word file</h2>
+        <p class="drop-sub">.docx or .doc up to 20 MB</p>
+        <button class="btn btn-primary">Select File</button>
+      </div>
+    </div>
+
+    <!-- Preview (Optional for Word) -->
+    <div id="filePreview" hidden style="padding: 40px; text-align: center;">
+      <div class="file-info" style="margin-bottom: 30px;">
+        <div class="file-type-badge">W</div>
+        <div class="file-details">
+          <span class="file-name" id="fileName"></span>
+          <span class="file-size" id="fileSize"></span>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="convertBtn" style="width: 200px; justify-content: center;">Convert Now →</button>
+      <div style="margin-top: 15px;">
+        <a href="#" onclick="location.reload()" style="font-size: 0.85rem; color: var(--text-dim);">Cancel</a>
+      </div>
+    </div>
+
+    <!-- Processing -->
+    <div id="processingState" hidden>
+      <div class="progress-panel">
+        <div class="progress-status" id="statusText">Uploading document...</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-note">LibreOffice is processing your file with high fidelity.</p>
+      </div>
+    </div>
+
+    <!-- Done -->
+    <div id="doneState" hidden>
+      <div class="done-panel">
+        <span class="done-icon">✓</span>
+        <h2 class="drop-title">Document Ready</h2>
+        <p class="drop-sub" id="resultFileName">Your PDF is ready for download.</p>
+        <div class="download-actions">
+          <a href="#" id="downloadBtn" class="btn btn-primary" style="width: 200px; justify-content: center;">Download PDF</a>
+          <button class="btn btn-outline" onclick="location.reload()">Convert Another</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState" hidden>
+      <div class="error-panel">
+        <span class="done-icon" style="color: #ef4444;">✕</span>
+        <h2 class="drop-title">Conversion Error</h2>
+        <p class="drop-sub" id="errorMessage">Unable to process this file. Please check the format.</p>
+        <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="converter-info">
+    <h2>Reliable Word to PDF Conversion</h2>
+    <p>Powered by the same engine used by millions of enterprise users worldwide.</p>
+    <ul>
+      <li><strong>Font Preservation</strong>: All standard fonts and embedded styles are maintained.</li>
+      <li><strong>Layout Integrity</strong>: Tables, headers, and complex layouts remain identical.</li>
+      <li><strong>Privacy Guaranteed</strong>: Files are deleted automatically after 10 minutes.</li>
+      <li><strong>No Watermarks</strong>: Professional, clean PDFs every time.</li>
+    </ul>
+  </section>
+
+  {{ render_ad('horizontal') }}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/progress.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initConverter('word_to_pdf');
+  });
+</script>
+{% endblock %}

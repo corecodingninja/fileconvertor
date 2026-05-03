@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="error-page container">
+  <div class="error-card">
+    <div class="error-code">{{ error_code or '400' }}</div>
+    <h1>{{ error_title or 'Something went wrong' }}</h1>
+    <p>{{ error_message or 'The file could not be processed. Please check the file format and size, then try again.' }}</p>
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">Go Home</a>
+      <a href="/word-to-pdf" class="btn btn-outline">Try Converting Again</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

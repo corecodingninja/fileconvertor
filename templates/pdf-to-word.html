@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="converter-page container">
+  <div class="converter-header">
+    <div class="hero-badge" style="color: #ef4444; background: rgba(239,68,68,0.1);">PDF Document</div>
+    <h1>PDF to Word</h1>
+    <p class="converter-sub">Turn your non-editable PDFs into fully editable Microsoft Word documents.</p>
+  </div>
+
+  {{ render_ad('horizontal') }}
+
+  <div class="converter-box" id="converterBox">
+    <!-- Initial Upload -->
+    <div id="uploadState">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" hidden accept=".pdf">
+        <span class="drop-icon">📕</span>
+        <h2 class="drop-title">Drop your PDF here</h2>
+        <p class="drop-sub">.pdf files up to 20 MB</p>
+        <button class="btn btn-primary" style="background: #ef4444; box-shadow: 0 10px 20px rgba(239,68,68,0.3);">Select PDF</button>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div id="filePreview" hidden style="padding: 40px; text-align: center;">
+      <div class="file-info" style="margin-bottom: 30px;">
+        <div class="file-type-badge" style="background: #ef4444;">P</div>
+        <div class="file-details">
+          <span class="file-name" id="fileName"></span>
+          <span class="file-size" id="fileSize"></span>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="convertBtn" style="background: #ef4444; width: 200px; justify-content: center;">Convert to Word</button>
+      <div style="margin-top: 15px;">
+        <a href="#" onclick="location.reload()" style="font-size: 0.85rem; color: var(--text-dim);">Cancel</a>
+      </div>
+    </div>
+
+    <!-- Processing -->
+    <div id="processingState" hidden>
+      <div class="progress-panel">
+        <div class="progress-status" id="statusText">Analyzing PDF...</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar" style="background: #ef4444; box-shadow: 0 0 20px rgba(239,68,68,0.4);"></div>
+        </div>
+        <p class="progress-note">Our AI is extracting text and layouts from your document.</p>
+      </div>
+    </div>
+
+    <!-- Done -->
+    <div id="doneState" hidden>
+      <div class="done-panel">
+        <span class="done-icon">✓</span>
+        <h2 class="drop-title">Editable File Ready</h2>
+        <p class="drop-sub" id="resultFileName">Your Word document is ready for download.</p>
+        <div class="download-actions">
+          <a href="#" id="downloadBtn" class="btn btn-primary" style="background: #ef4444; width: 200px; justify-content: center;">Download Word</a>
+          <button class="btn btn-outline" onclick="location.reload()">Convert Another</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState" hidden>
+      <div class="error-panel">
+        <span class="done-icon" style="color: #ef4444;">✕</span>
+        <h2 class="drop-title">Processing Failed</h2>
+        <p class="drop-sub" id="errorMessage">Unable to convert this PDF. It might be password protected.</p>
+        <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="converter-info">
+    <h2>Editable PDFs in Seconds</h2>
+    <p>Convert any PDF into a high-quality DOCX file that you can edit in Microsoft Word, Google Docs, or LibreOffice.</p>
+    <ul>
+      <li><strong>OCR Engine</strong>: Extracts text accurately from most digital PDFs.</li>
+      <li><strong>Formatting Kept</strong>: We try to maintain columns, tables, and images.</li>
+      <li><strong>Safe & Secure</strong>: 256-bit encryption during transfer and auto-deletion.</li>
+      <li><strong>Zero Cost</strong>: Unlimited daily conversions for all users.</li>
+    </ul>
+  </section>
+
+  {{ render_ad('horizontal') }}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/progress.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initConverter('pdf_to_word');
+  });
+</script>
+{% endblock %}

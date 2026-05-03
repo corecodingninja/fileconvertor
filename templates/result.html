@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="converter-page container">
+  <div class="converter-header">
+    <div class="hero-badge">Task Complete</div>
+    <h1>Processing Result</h1>
+  </div>
+
+  <div class="converter-box" style="padding: 60px 40px; text-align: center;">
+    {% if job.status == 'done' %}
+      <span class="done-icon">✓</span>
+      <h2 class="drop-title">Success!</h2>
+      <p class="drop-sub" style="margin-bottom: 32px;">
+        <strong>{{ job.original_filename }}</strong> was processed with high fidelity.
+      </p>
+      
+      <div class="download-actions">
+        <a href="/api/download/{{ job.id }}" class="btn btn-primary" style="width: 250px; justify-content: center; font-size: 1.1rem;">
+          Download Result
+        </a>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 16px;">
+          ⏱ Automatically deleted in 10 minutes for your privacy.
+        </p>
+        <div style="margin-top: 32px; border-top: 1px solid var(--border-glass); pt-32; width: 100%;">
+          <a href="/" class="btn btn-outline" style="margin-top: 24px;">Start New Task</a>
+        </div>
+      </div>
+
+    {% elif job.status == 'failed' %}
+      <span class="done-icon" style="color: #ef4444;">✕</span>
+      <h2 class="drop-title">Processing Failed</h2>
+      <p class="drop-sub" style="margin-bottom: 32px;">
+        {{ job.error_message or 'An unexpected error occurred. Please ensure your file is not password-protected and try again.' }}
+      </p>
+      <a href="/" class="btn btn-primary">Back to Tools</a>
+
+    {% else %}
+      <div style="font-size: 4rem; margin-bottom: 24px;">⏳</div>
+      <h2 class="drop-title">Processing...</h2>
+      <p class="drop-sub">Your file is in the final stages of conversion. This page will update shortly.</p>
+      <div class="progress-bar-wrap" style="margin-top: 24px;">
+        <div class="progress-bar" style="width: 80%; animation: progress-pulse 2s infinite;"></div>
+      </div>
+      <script>setTimeout(() => location.reload(), 2500);</script>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">100% Private · No Limits · Next-Gen Formats</div>
+    <h1 class="hero-title">File Conversion<br><span class="accent">Perfected.</span></h1>
+    <p class="hero-sub">The ultimate toolkit for document and image processing. Convert between formats, optimize for web, and maintain 100% privacy.</p>
+    
+    <div class="tool-cards">
+      <!-- Documents -->
+      <a href="/word-to-pdf" class="tool-card">
+        <div class="tool-card-icon">W</div>
+        <div class="tool-card-body">
+          <h2>Word to PDF</h2>
+          <p>Preserve fonts and layout with high-fidelity PDF export.</p>
+        </div>
+      </a>
+      
+      <a href="/pdf-to-word" class="tool-card">
+        <div class="tool-card-icon" style="color: #ef4444;">P</div>
+        <div class="tool-card-body">
+          <h2>PDF to Word</h2>
+          <p>Make your PDFs editable again with smart OCR detection.</p>
+        </div>
+      </a>
+
+      <!-- Images -->
+      <a href="/png-to-jpg" class="tool-card">
+        <div class="tool-card-icon" style="color: #10b981;">I</div>
+        <div class="tool-card-body">
+          <h2>Image Converter</h2>
+          <p>Convert PNG, JPG, and WebP with zero quality loss.</p>
+        </div>
+      </a>
+
+      <a href="/compress-image" class="tool-card">
+        <div class="tool-card-icon" style="color: #f59e0b;">C</div>
+        <div class="tool-card-body">
+          <h2>Smart Compressor</h2>
+          <p>Reduce file size by up to 90% without visible changes.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="features container">
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🔒</div>
+      <h3>Privacy First</h3>
+      <p>Your files are processed in an isolated environment and permanently deleted after 10 minutes. We never view or store your data.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <h3>Turbo Speed</h3>
+      <p>Powered by high-performance clusters, most conversions take less than 3 seconds. No waiting queues, ever.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">✨</div>
+      <h3>Pixel Perfect</h3>
+      <p>Using industry-standard engines like LibreOffice and Pillow to ensure your files look exactly as they should.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ad-placeholder container">
+  <span class="ad-label">Advertisement</span>
+  <!-- [Responsive Ad Slot] -->
+</section>
+
+<section class="how-it-works container" style="text-align: center; padding: 100px 0;">
+  <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 60px;">The 3-Step Workflow</h2>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 20px;">01</div>
+      <h3>Upload</h3>
+      <p>Drag and drop your files into our secure glass-vault upload zone.</p>
+    </div>
+    <div class="feature-item">
+      <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 20px;">02</div>
+      <h3>Process</h3>
+      <p>Our algorithms handle the conversion with surgical precision.</p>
+    </div>
+    <div class="feature-item">
+      <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 20px;">03</div>
+      <h3>Download</h3>
+      <p>Grab your file instantly. It's automatically wiped from our system.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

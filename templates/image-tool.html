@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="converter-page container">
+  <div class="converter-header">
+    <div class="hero-badge">Image Optimization</div>
+    <h1>{{ title }}</h1>
+    <p class="converter-sub">{{ meta.description }}</p>
+  </div>
+
+  {{ render_ad('horizontal') }}
+
+  <div class="converter-box" id="converterBox">
+    <!-- Initial Upload State -->
+    <div id="uploadState">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" hidden accept="image/*">
+        <span class="drop-icon">🖼️</span>
+        <h2 class="drop-title">Drop your image here</h2>
+        <p class="drop-sub">Maximum file size: 20 MB</p>
+        <button class="btn btn-outline">Browse Files</button>
+      </div>
+    </div>
+
+    <!-- Processing State -->
+    <div id="processingState" hidden>
+      <div class="progress-panel">
+        <div class="progress-status" id="statusText">Uploading image...</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-note">Securely processing. Your file will be ready in seconds.</p>
+      </div>
+    </div>
+
+    <!-- Done State -->
+    <div id="doneState" hidden>
+      <div class="done-panel">
+        <span class="done-icon">✓</span>
+        <h2 class="drop-title">Conversion Complete!</h2>
+        <p class="drop-sub" id="resultFileName">Your image is ready for download.</p>
+        <div class="download-actions">
+          <a href="#" id="downloadBtn" class="btn btn-primary" style="width: 200px; justify-content: center;">Download Now</a>
+          <button class="btn btn-outline" onclick="location.reload()">Convert Another</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" hidden>
+      <div class="error-panel">
+        <span class="done-icon" style="color: #ef4444;">✕</span>
+        <h2 class="drop-title">Optimization Failed</h2>
+        <p class="drop-sub" id="errorMessage">Something went wrong during the conversion.</p>
+        <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="converter-info">
+    <h2>Why use our {{ title }}?</h2>
+    <p>Our premium image tools are designed for web performance and privacy.</p>
+    <ul>
+      <li><strong>Pixel Perfection</strong>: We use Pillow, the industry-standard image processing library.</li>
+      <li><strong>Privacy First</strong>: Images are processed in memory and never stored long-term.</li>
+      <li><strong>Lightning Fast</strong>: Optimized for speed, our tools finish in under 2 seconds.</li>
+      <li><strong>Next-Gen Ready</strong>: Full support for WebP to improve your site's SEO.</li>
+    </ul>
+  </section>
+
+  {{ render_ad('horizontal') }}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/progress.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initConverter('{{ tool_type }}');
+  });
+</script>
+{% endblock %}

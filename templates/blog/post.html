@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="blog-post-page container">
+  <div class="blog-layout">
+    <div class="blog-main">
+      <nav class="breadcrumb">
+        <a href="/">Home</a> / <a href="/blog/">Blog</a> / {{ post.title }}
+      </nav>
+      
+      <article class="blog-post">
+        <header class="post-header">
+          <div class="post-meta">
+            <span class="post-cat">{{ post.category }}</span> • {{ post.date }}
+          </div>
+          <h1>{{ post.title }}</h1>
+          <div class="post-author-top">
+            <div class="author-avatar">{{ post.author[0] }}</div>
+            <span>{{ post.author }}</span>
+          </div>
+        </header>
+
+        {{ render_ad('horizontal', 'in-content-ad') }}
+
+        <div class="post-content prose">
+          {{ post.content | safe }}
+        </div>
+
+        <footer class="post-footer">
+          <div class="share-box">
+            <h4>Share this article</h4>
+            <div class="share-buttons">
+              <span class="share-btn">Twitter</span>
+              <span class="share-btn">LinkedIn</span>
+              <span class="share-btn">Facebook</span>
+            </div>
+          </div>
+        </footer>
+      </article>
+
+      <section class="related-posts">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          {% for rp in related %}
+          <a href="/blog/{{ rp.slug }}" class="related-card">
+            <h4>{{ rp.title }}</h4>
+            <span>Read Article →</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+    <aside class="blog-sidebar">
+      <div class="sidebar-widget widget-search">
+        <input type="text" placeholder="Search blog...">
+      </div>
+
+      {{ render_ad('sidebar', 'sidebar-ad') }}
+
+      <div class="sidebar-widget widget-popular">
+        <h3>Most Popular</h3>
+        <ul>
+          <li><a href="/word-to-pdf">Word to PDF Converter</a></li>
+          <li><a href="/pdf-to-word">PDF to Word Converter</a></li>
+          <li><a href="/blog/why-privacy-matters-in-file-conversion">Privacy Guide</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}
