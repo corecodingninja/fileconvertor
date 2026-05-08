@@ -13,13 +13,13 @@ class BaseConfig:
     RATELIMIT_STORAGE_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
     ALLOWED_WORD_EXTENSIONS = {'.docx', '.doc'}
     ALLOWED_PDF_EXTENSIONS = {'.pdf'}
-    ALLOWED_IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.webp', '.bmp'}
+    ALLOWED_IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.webp', '.bmp', '.tiff', '.tif', '.gif'}
     ALLOWED_WORD_MIMES = {
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'application/msword',
     }
     ALLOWED_PDF_MIMES = {'application/pdf'}
-    ALLOWED_IMAGE_MIMES = {'image/png', 'image/jpeg', 'image/webp', 'image/bmp'}
+    ALLOWED_IMAGE_MIMES = {'image/png', 'image/jpeg', 'image/webp', 'image/bmp', 'image/tiff', 'image/gif'}
     MAX_CONCURRENT_JOBS_PER_IP = 2
     RATE_LIMIT_PER_HOUR = 10
     SITE_URL = os.getenv('SITE_URL', 'http://localhost:5001')

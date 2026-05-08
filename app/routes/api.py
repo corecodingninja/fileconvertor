@@ -34,7 +34,8 @@ def convert():
 
     allowed_types = (
         'word_to_pdf', 'pdf_to_word', 
-        'png_to_jpg', 'jpg_to_png', 'image_to_webp', 'compress_image'
+        'png_to_jpg', 'jpg_to_png', 'image_to_webp', 'compress_image',
+        'image_to_bmp', 'image_to_tiff', 'image_to_gif'
     )
     if conversion_type not in allowed_types:
         return jsonify({'error': 'Invalid conversion type.'}), 400
@@ -175,6 +176,12 @@ def _run_sync(job):
             output_path = convert_image(job.input_path, output_dir, 'PNG')
         elif job.type == 'image_to_webp':
             output_path = convert_image(job.input_path, output_dir, 'WEBP')
+        elif job.type == 'image_to_bmp':
+            output_path = convert_image(job.input_path, output_dir, 'BMP')
+        elif job.type == 'image_to_tiff':
+            output_path = convert_image(job.input_path, output_dir, 'TIFF')
+        elif job.type == 'image_to_gif':
+            output_path = convert_image(job.input_path, output_dir, 'GIF')
         elif job.type == 'compress_image':
             output_path = compress_image(job.input_path, output_dir)
         else:

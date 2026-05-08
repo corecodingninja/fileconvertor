@@ -45,25 +45,35 @@ def convert_image(input_path: str, output_dir: str, target_format: str) -> str:
     return output_path
 
 
-def compress_image(input_path: str, output_dir: str, quality: int = 70) -> str:
+def compress_image(input_path: str, output_dir: str, quality: int = 65) -> str:
     """Compress an image using Pillow. Returns path to compressed file."""
     stem = Path(input_path).stem
     suffix = Path(input_path).suffix
     output_path = os.path.join(output_dir, f'{stem}_compressed{suffix}')
 
     with Image.open(input_path) as img:
-        orig_format = img.format
-        # For JPEG/WebP, we can use quality
-        save_params = {'optimize': True}
+        orig_format = img.format or 'JPEG'
         
-        # Ensure we can save as the target format
+        # Convert RGBA/P/LA images with RGB suffix to RGB
         if img.mode in ('RGBA', 'P', 'LA') and suffix.lower() in ('.jpg', '.jpeg'):
             img = img.convert('RGB')
             orig_format = 'JPEG'
-            
-        if orig_format in ('JPEG', 'WEBP'):
+        
+        # Build save parameters based on format
+        save_params = {}
+        
+        if orig_format in ('JPEG', 'JPG'):
             save_params['quality'] = quality
-            
+            save_params['optimize'] = True
+        elif orig_format == 'PNG':
+            save_params['optimize'] = True
+            save_params['compress_level'] = 9
+        elif orig_format == 'WEBP':
+            save_params['quality'] = quality
+            save_params['method'] = 6  # Highest compression method
+        elif orig_format == 'GIF':
+            save_params['optimize'] = True
+        
         img.save(output_path, format=orig_format, **save_params)
 
     return output_path

@@ -34,6 +34,12 @@ def run_conversion(self, job_id: str):
             output_path = convert_image(job.input_path, output_dir, 'PNG')
         elif job.type == 'image_to_webp':
             output_path = convert_image(job.input_path, output_dir, 'WEBP')
+        elif job.type == 'image_to_bmp':
+            output_path = convert_image(job.input_path, output_dir, 'BMP')
+        elif job.type == 'image_to_tiff':
+            output_path = convert_image(job.input_path, output_dir, 'TIFF')
+        elif job.type == 'image_to_gif':
+            output_path = convert_image(job.input_path, output_dir, 'GIF')
         elif job.type == 'compress_image':
             output_path = compress_image(job.input_path, output_dir)
         else:

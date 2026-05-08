@@ -46,6 +46,24 @@ def compress_image():
     return render_template('image-tool.html', meta=meta, tool_type='compress_image', title='Compress Image', active_page='compress_image')
 
 
+@main_bp.route('/image-to-bmp')
+def image_to_bmp():
+    meta = get_page_meta('image_to_bmp')
+    return render_template('image-tool.html', meta=meta, tool_type='image_to_bmp', title='Image to BMP', active_page='image_to_bmp')
+
+
+@main_bp.route('/image-to-tiff')
+def image_to_tiff():
+    meta = get_page_meta('image_to_tiff')
+    return render_template('image-tool.html', meta=meta, tool_type='image_to_tiff', title='Image to TIFF', active_page='image_to_tiff')
+
+
+@main_bp.route('/image-to-gif')
+def image_to_gif():
+    meta = get_page_meta('image_to_gif')
+    return render_template('image-tool.html', meta=meta, tool_type='image_to_gif', title='Image to GIF', active_page='image_to_gif')
+
+
 @main_bp.route('/about')
 def about():
     meta = get_page_meta('about')
@@ -81,6 +99,9 @@ def sitemap():
         {'loc': f'{base}/jpg-to-png', 'priority': '0.8', 'changefreq': 'weekly'},
         {'loc': f'{base}/image-to-webp', 'priority': '0.8', 'changefreq': 'weekly'},
         {'loc': f'{base}/compress-image', 'priority': '0.8', 'changefreq': 'weekly'},
+        {'loc': f'{base}/image-to-bmp', 'priority': '0.7', 'changefreq': 'weekly'},
+        {'loc': f'{base}/image-to-tiff', 'priority': '0.7', 'changefreq': 'weekly'},
+        {'loc': f'{base}/image-to-gif', 'priority': '0.7', 'changefreq': 'weekly'},
         {'loc': f'{base}/blog/', 'priority': '0.7', 'changefreq': 'weekly'},
         {'loc': f'{base}/about', 'priority': '0.5', 'changefreq': 'monthly'},
         {'loc': f'{base}/contact', 'priority': '0.5', 'changefreq': 'monthly'},

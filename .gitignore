@@ -8,17 +8,120 @@ env/
 venv/
 .env
 .venv
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Database
 *.db
 *.sqlite
+*.sqlite3
+instance/
 
 # Conversion Temp Files
+/tmp/
 /tmp/fileconverter/
+*.tmp
 
 # IDEs
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+.vim/
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.hypothesis/
+*.cover
+
+# Celery
+celerybeat-schedule
+dump.rdb
+
+# Node (if used for frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Backup files
+*.bak
+*.backup
+*.orig
+*.swp
+*~
+
+# Logs
+*.log
+logs/
+
+# Environment specific
+.env.local
+.env.*.local
+
+# Secrets
+secrets.json
+config.secret.json
+
+# Cache
+.cache/
+*.cache
+
+# Build artifacts
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Virtual environments for different OS
+venv-*/
+env-*/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*temp*
+
+# IDE generated files
+.classpath
+.c9/
+*.launch
+.scalabag
+.worksheets
+
+# Production
+dist/
+*.min.js
+*.min.css
+
+# Misc
+.DS_Store
+.AppleDouble
+.LSOverride
+*.pem
+*.key
+*.crt

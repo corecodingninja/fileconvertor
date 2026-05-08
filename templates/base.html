@@ -21,8 +21,21 @@
   <meta name="description"
     content="{{ meta.description if meta else 'Convert Word to PDF, PDF to Word, and optimize images for free online. Secure, fast, and private.' }}" />
   <meta name="keywords"
-    content="{{ meta.keywords if meta else 'file converter, word to pdf, pdf to word, image converter' }}" />
+    content="{{ meta.keywords if meta else 'file converter, word to pdf, pdf to word, image converter, image optimization' }}" />
+  <meta name="author" content="ConverterHub">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
   <link rel="canonical" href="{{ request.url }}" />
+  <link rel="alternate" hreflang="en" href="{{ request.url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ meta.title if meta else 'ConverterHub' }}" />
@@ -105,11 +118,24 @@
         <span class="logo-text">ConverterHub</span>
       </a>
       <ul class="nav-links">
-        <li><a href="/word-to-pdf">Word to PDF</a></li>
-        <li><a href="/pdf-to-word">PDF to Word</a></li>
-        <li><a href="/png-to-jpg">PNG to JPG</a></li>
-        <li><a href="/compress-image">Compress</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <!-- Document Converters -->
+        <li><a href="/word-to-pdf" title="Convert Word documents to PDF">Word to PDF</a></li>
+        <li><a href="/pdf-to-word" title="Convert PDF to editable Word documents">PDF to Word</a></li>
+        
+        <!-- Image Converters -->
+        <li class="nav-dropdown">
+          <a href="#" class="nav-toggle-dropdown" title="Image conversion tools">Images ▼</a>
+          <ul class="nav-submenu">
+            <li><a href="/png-to-jpg" title="Convert PNG images to JPG format">PNG to JPG</a></li>
+            <li><a href="/jpg-to-png" title="Convert JPG images to PNG format with transparency">JPG to PNG</a></li>
+            <li><a href="/image-to-webp" title="Convert to WebP for modern web optimization">Image to WebP</a></li>
+            <li><a href="/compress-image" title="Compress and optimize image file size">Compress Image</a></li>
+          </ul>
+        </li>
+        
+        <!-- Blog & Info -->
+        <li><a href="/blog/" title="Read conversion guides and tips">Blog</a></li>
+        <li><a href="/about" title="Learn about ConverterHub">About</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     </nav>
